@@ -41,6 +41,15 @@ public class RingofFire extends JFrame
         lbWelcome = new JLabel();
         lbWelcome.setFont(mainFont);
 
+        //Reaction photos (restored 2026; images pending recovery from OneDrive)
+        ImageIcon imageHappy = new ImageIcon("assets/brookshirehappy.jpg");
+        JLabel lbHappy = new JLabel(imageHappy);
+        lbHappy.setVisible(false);
+
+        ImageIcon imageMad = new ImageIcon("assets/brookshiremad.jpg");
+        JLabel lbMad = new JLabel(imageMad);
+        lbMad.setVisible(false);
+
         //Buttons Panel
         JButton btnOK = new JButton("Calculate");
         btnOK.setFont(mainFont);
@@ -84,7 +93,6 @@ public class RingofFire extends JFrame
             }
             
         });
-        /*
         JButton btnHit = new JButton("Bullseye?");
         btnHit.setBackground(Color.green);
         btnHit.setFont(mainFont);
@@ -93,7 +101,7 @@ public class RingofFire extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) {
                 lbHappy.setVisible(true);
-
+                lbMad.setVisible(false);
             }
             
         });
@@ -105,27 +113,31 @@ public class RingofFire extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) {
                 lbMad.setVisible(true);
+                lbHappy.setVisible(false);
             }
-            
+
         });
-        */
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new GridLayout(2, 2, 5, 5));
         buttonsPanel.setOpaque(false);
         buttonsPanel.add(btnOK);
         buttonsPanel.add(btnClear);
-        //buttonsPanel.add(btnHit);
-        //buttonsPanel.add(btnMiss);
+        buttonsPanel.add(btnHit);
+        buttonsPanel.add(btnMiss);
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
         mainPanel.setBackground(new Color(250, 128, 114));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        //mainPanel.add(lbHappy, BorderLayout.CENTER);
-        //mainPanel.add(lbMad, BorderLayout.CENTER);
+        JPanel photoPanel = new JPanel();
+        photoPanel.setOpaque(false);
+        photoPanel.add(lbHappy);
+        photoPanel.add(lbMad);
+
         mainPanel.add(formPanel, BorderLayout.NORTH);
         mainPanel.add(buttonsPanel, BorderLayout.SOUTH);
         mainPanel.add(lbWelcome, BorderLayout.CENTER);
+        mainPanel.add(photoPanel, BorderLayout.EAST);
         add(mainPanel);
 
         setTitle("Ring of Fire");
